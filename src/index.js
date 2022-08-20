@@ -11,7 +11,6 @@ const loadMoreBtn = document.querySelector('.load-more');
 let query = '';
 let page = 1;
 const perPage = 40;
-// let simpleLightbox = null;
 
 
 searchForm.addEventListener('submit', onSearchForm);
@@ -23,6 +22,7 @@ async function onSearchForm(e) {
     page = 1;
     query = e.currentTarget.searchQuery.value.trim();
     gallery.innerHTML = '';
+    loadMoreBtn.classList.add('is-hidden');
 
     if (query === '') {
         alertEmptySearch();
@@ -50,7 +50,7 @@ async function onSearchForm(e) {
         const object = await fetchImg(query, page, perPage);
         const objData = object.data;
         if (objData.totalHits === 0) {
-                alertNoImagesFound();
+            alertNoImagesFound();
             } else {
                 renderGallery(objData.hits);
                 alertImagesToFound(objData);
@@ -64,7 +64,7 @@ async function onSearchForm(e) {
         onScroll();
         
     } catch (error) {
-        console.log(error);
+        Notiflix.Notify.failure("Ooops...Something goes wrong");
     }
 
 }
@@ -103,7 +103,7 @@ async function onLoadMoreBtn() {
         }
         onScrollMore();
     } catch (error) {
-        console.log(error);
+        Notiflix.Notify.failure("Ooops...Something goes wrong");
     }
 
 }

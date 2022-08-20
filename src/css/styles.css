@@ -40,17 +40,16 @@ img {
 }
 
 .search-form-wrapper{
-  
   width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
   position: fixed;
   top: 0;
+  left:0;
   background-color: #4449d2;
 }
 
 .search-form {
-  width: 100%;
   display: flex;
   justify-content: center;
 }
