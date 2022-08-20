@@ -11,7 +11,7 @@ const loadMoreBtn = document.querySelector('.load-more');
 let query = '';
 let page = 1;
 const perPage = 40;
-let simpleLightbox = null;
+// let simpleLightbox = null;
 
 
 searchForm.addEventListener('submit', onSearchForm);
@@ -54,7 +54,7 @@ async function onSearchForm(e) {
             } else {
                 renderGallery(objData.hits);
                 alertImagesToFound(objData);
-                simpleLightBox = new SimpleLightbox('.gallery a').refresh();
+                const simpleLightBox = new SimpleLightbox('.gallery a').refresh();
             }
 
             if (objData.totalHits > perPage) {
@@ -99,7 +99,7 @@ async function onLoadMoreBtn() {
                 alertEndOfSearch();
             } else {
                 renderGallery(objData.hits);
-                simpleLightbox = new SimpleLightbox('.gallery a').refresh();
+                const simpleLightbox = new SimpleLightbox('.gallery a').refresh();
         }
         onScrollMore();
     } catch (error) {
