@@ -64,7 +64,7 @@ async function onSearchForm(e) {
         onScroll();
         
     } catch (error) {
-        Notiflix.Notify.failure(error);
+        console.log(error);
     }
 
 }
@@ -103,7 +103,7 @@ async function onLoadMoreBtn() {
         }
         onScrollMore();
     } catch (error) {
-        Notiflix.Notify.failure(error);
+        console.log(error);
     }
 
 }
