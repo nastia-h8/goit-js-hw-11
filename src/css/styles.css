@@ -18,3 +18,138 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  height: 30vh;
+  object-fit: cover;
+  width: 100%;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.search-form-wrapper{
+  
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: fixed;
+  top: 0;
+  background-color: #4449d2;
+}
+
+.search-form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-form input {
+  width: 300px;
+  padding: 10px;
+  margin-right: 5px;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  background-color: #fff;
+}
+
+.search-form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 50px;
+  border: none;
+  background-color: rgb(169,167,167);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-form button:hover,
+.search-form button:focus {
+  background-color: rgb(190, 185, 185);
+}
+
+.gallery{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 60px;
+  margin-left: -10px;
+  margin-top: -10px;
+
+}
+
+.gallery__link {
+  margin-top: 10px;
+  margin-left: 10px;
+  flex-basis: calc((100% - 40px) / 4);
+  border: 2px solid rgb(241, 238, 238);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.gallery__link:hover,
+.gallery__link:focus {
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+        1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+.photo-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.info {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+
+  font-size: 14px;
+}
+
+.info-item:not(:last-child){
+  margin-right: 5px;
+}
+
+
+.load-more{
+  display: block;
+  margin: 25px auto 0 auto;
+  min-width: 100px;
+  padding: 10px;
+
+  border: none;
+  border-radius: 5px;
+  background-color: #4449d2;
+  color: white;
+  cursor: pointer;
+}
+
+.load-more:hover,
+.load-more:focus{
+  background-color: #5a5fe6;
+}
+
+.load-more.is-hidden{
+  display: none;
+}
