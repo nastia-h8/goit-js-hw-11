@@ -7,9 +7,11 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 const searchForm = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
 const loadMoreBtn = document.querySelector('.load-more');
+const endOfSearchText = document.querySelector('.gallery__text');
 
 let query = '';
 let page = 1;
+let loadedHits = 0;
 const perPage = 40;
 
 
@@ -22,12 +24,15 @@ async function onSearchForm(e) {
     page = 1;
     query = e.currentTarget.searchQuery.value.trim();
     gallery.innerHTML = '';
-    loadMoreBtn.classList.add('is-hidden');
 
+    loadMoreBtn.classList.add('is-hidden');
+    endOfSearchText.classList.add('is-hidden');
+    
     if (query === '') {
         alertEmptySearch();
         return;
     }
+
     // fetchImg(query, page, perPage)
     //     .then(({data}) => {
     //         if (data.totalHits === 0) {
@@ -49,6 +54,9 @@ async function onSearchForm(e) {
     try {
         const object = await fetchImg(query, page, perPage);
         const objData = object.data;
+        loadedHits = objData.hits.length;
+        // console.log('first', loadedHits)
+
         if (objData.totalHits === 0) {
             alertNoImagesFound();
             } else {
@@ -92,15 +100,21 @@ async function onLoadMoreBtn() {
     try {
         const object = await fetchImg(query, page, perPage);
         const objData = object.data;
-        const totalPages = Math.ceil(objData.totalHits / perPage);
+        // const totalPages = Math.ceil(objData.totalHits / perPage);
+        const totalHits = objData.totalHits;
+        loadedHits += objData.hits.length;
+        // console.log('second', loadedHits)
 
-        if (page > totalPages) {
-                loadMoreBtn.classList.add('is-hidden');
-                alertEndOfSearch();
-            } else {
-                renderGallery(objData.hits);
-                const simpleLightbox = new SimpleLightbox('.gallery a').refresh();
-        }
+        renderGallery(objData.hits);
+            const simpleLightbox = new SimpleLightbox('.gallery a').refresh();
+
+        if (loadedHits === totalHits) {
+            loadMoreBtn.classList.add('is-hidden');
+            endOfSearchText.classList.remove('is-hidden');
+            // renderAlertMessageMarkUp();
+                // alertEndOfSearch();
+            }
+        
         onScrollMore();
     } catch (error) {
         Notiflix.Notify.failure("Ooops...Something goes wrong");
@@ -154,10 +168,6 @@ function alertNoImagesFound() {
     Notiflix.Notify.failure('No images were found for this request, try something else.');
 }
 
-function alertEndOfSearch() {
-    Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");
-}
-
 
 function onScroll () {
       window.scrollBy({
@@ -165,7 +175,6 @@ function onScroll () {
         behavior: 'smooth',
       });
 }
-
 
 function onScrollMore () {
      const { height: cardHeight } = document

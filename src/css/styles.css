@@ -152,3 +152,11 @@ img {
 .load-more.is-hidden{
   display: none;
 }
+
+.gallery__text{
+margin-top: 20px;
+text-align: center;
+
+font-weight: bold;
+color: #5a5fe6;
+}
