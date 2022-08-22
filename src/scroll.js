@@ -6,7 +6,6 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const searchForm = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
-const loadMoreBtn = document.querySelector('.load-more');
 const endOfSearchText = document.querySelector('.gallery__text');
 
 let query = '';
@@ -29,15 +28,11 @@ async function onSearchForm(e) {
         alertEmptySearch();
         return;
     }
-
     try {
         createCollection();
-        
     } catch (error) {
         Notiflix.Notify.failure("Ooops...Something goes wrong");
-
     }
-
 }
 
 async function createCollection() {
@@ -48,11 +43,9 @@ async function createCollection() {
 
     if (objData.totalHits === 0) {
         alertNoImagesFound();
-    } 
-
-    if (page === 1) {
+    } else if (page === 1) {
         alertImagesToFound(objData);
-    }
+    } 
     
     renderGallery(objData.hits);
     const simpleLightBox = new SimpleLightbox('.gallery a').refresh();
@@ -69,14 +62,15 @@ async function createCollection() {
 const io = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) {
-      return;
+        return;
     }
+    getLastImgEl();
     createCollection();
   });
 });
 
 function getLastImgEl() {
-    return document.querySelector('.gallery__link:last-child')
+    return document.querySelector('.gallery__link:last-child');
 }
 
 
@@ -103,8 +97,7 @@ function renderGallery(images) {
                     </div>
                 </div>
                 </a>
-      `
-       
+    `
         })
         .join('');
 
