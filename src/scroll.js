@@ -19,6 +19,7 @@ searchForm.addEventListener('submit', onSearchForm);
 async function onSearchForm(e) {
     e.preventDefault();
 
+    page = 1;
     query = e.currentTarget.searchQuery.value.trim();
     gallery.innerHTML = '';
 
@@ -56,7 +57,6 @@ async function createCollection() {
     if (loadedHits === totalHits) {
         endOfSearchText.classList.remove('is-hidden');
     }
-
 }
 
 const io = new IntersectionObserver(entries => {
@@ -65,7 +65,7 @@ const io = new IntersectionObserver(entries => {
         return;
     }
     getLastImgEl();
-    createCollection();
+      createCollection();
   });
 });
 
