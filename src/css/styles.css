@@ -46,7 +46,7 @@ img {
   position: fixed;
   top: 0;
   left:0;
-  background-color: #4449d2;
+  background-image: linear-gradient(to right, #4ab2f3, #f8fe4d);
 }
 
 .search-form {
@@ -139,14 +139,14 @@ img {
 
   border: none;
   border-radius: 5px;
-  background-color: #4449d2;
+  background-color: #4ab2f3;
   color: white;
   cursor: pointer;
 }
 
 .load-more:hover,
 .load-more:focus{
-  background-color: #5a5fe6;
+  background-color: #6db6e4;
 }
 
 .load-more.is-hidden{
@@ -158,5 +158,5 @@ margin-top: 20px;
 text-align: center;
 
 font-weight: bold;
-color: #5a5fe6;
+color: #4ab2f3;
 }

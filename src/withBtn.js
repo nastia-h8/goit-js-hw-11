@@ -111,8 +111,6 @@ async function onLoadMoreBtn() {
         if (loadedHits === totalHits) {
             loadMoreBtn.classList.add('is-hidden');
             endOfSearchText.classList.remove('is-hidden');
-            // renderAlertMessageMarkUp();
-                // alertEndOfSearch();
             }
         
         onScrollMore();
@@ -167,7 +165,6 @@ function alertEmptySearch() {
 function alertNoImagesFound() {
     Notiflix.Notify.failure('No images were found for this request, try something else.');
 }
-
 
 function onScroll () {
       window.scrollBy({
