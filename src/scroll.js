@@ -20,6 +20,7 @@ async function onSearchForm(e) {
     e.preventDefault();
 
     page = 1;
+    loadedHits = 0;
     query = e.currentTarget.searchQuery.value.trim();
     gallery.innerHTML = '';
 
