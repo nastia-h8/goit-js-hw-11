@@ -45,6 +45,7 @@ async function createCollection() {
 
     if (objData.totalHits === 0) {
         alertNoImagesFound();
+        return;
     } else if (page === 1) {
         alertImagesToFound(objData);
     } 
